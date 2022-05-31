@@ -1,20 +1,6 @@
-server:
-  port: 0 # Starts spring boot application on random port
-
-
 spring:
+  config:
+    import: optional:configserver:http://localhost:8084
   application:
     name: demo-resource-server
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/microservicedev
-          jwk-set-uri: http://localhost:8080/realms/microservicedev/protocol/openid-connect/certs
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8083/eureka
-  instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+  profile: default

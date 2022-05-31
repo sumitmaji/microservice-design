@@ -1,3 +1,9 @@
 spring:
+  config:
+    import: bootstrap.yml
   application:
     name: demo-resource-server
+  profile: default
+  cloud:
+    config:
+      uri: http://localhost:8084

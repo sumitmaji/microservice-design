@@ -6,5 +6,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sumitmaji/microservice-design/tree/main/proprepo
-        searchPaths:
+          uri: https://github.com/sumitmaji/spring-app-prop-repo
+          searchPaths: demo-resource-server
+          cloneOnStart: true
