@@ -3,18 +3,25 @@ package com.sum.security;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.*;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
-//@EnableWebSecurity
-//public class SecurityConfig{
+import java.util.Collection;
+
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
+public class SecurityConfig{
 
 //    @Value("${auth0.audience}")
 //    private String audience;
@@ -49,13 +56,27 @@ import org.springframework.security.web.SecurityFilterChain;
 //        http.oauth2ResourceServer().jwt().jwkSetUri("https://skmaji.auth0.com/.well-known/jwks.json");
 //    }
 
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests(authorize -> authorize
-//                        .anyRequest().authenticated()
-//                )
-//                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-//        return http.build();
-//    }
-//}
+    /**
+     * It will grant access to /user endpoint
+     * if the access token has scope of profile
+     * @param http
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        JwtAuthenticationConverter conv = new JwtAuthenticationConverter();
+        conv.setJwtGrantedAuthoritiesConverter(new KeycloakConverter());
+        http
+                .authorizeHttpRequests()
+                    .antMatchers("/users")
+                    .hasRole("developer")
+                .anyRequest().authenticated()
+
+                .and()
+                .oauth2ResourceServer()
+                .jwt().jwtAuthenticationConverter(conv);
+        return http.build();
+    }
+}
