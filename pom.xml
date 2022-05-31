@@ -17,6 +17,7 @@
         <module>resource-server</module>
         <module>api-gateway</module>
         <module>discovery-service</module>
+        <module>config-server</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -71,6 +72,18 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
                 <version>3.1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+                <version>1.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+                <version>1.2.2.RELEASE</version>
             </dependency>
 
         </dependencies>
