@@ -31,15 +31,24 @@ curl -v --request GET \
 ```
 
 # Checking authorization code grant flow in keycloak
+
+- Export clientId and clientSecret
 ```shell
 export CLIENT_ID=microserviceclient
 export CLIENT_SECRET=bFPQHeOg79Lr4bQWaPdR3nK3YQfveI1d
-
-
+```
+- Call the endpoint to authenticate user
+```shell
 echo "http://localhost:8080/realms/microservicedev/protocol/openid-connect/auth?response_type=code&client_id=$CLIENT_ID&redirect_uri=http://localhost:8081/callback&scope=openid&state=adfasdf"
+```
 
+- Get the authorization code
+```shell
 export CODE=
+```
 
+- Call the endpoint to get access token
+```shell
 curl --request POST \
   --url 'http://localhost:8080/realms/microservicedev/protocol/openid-connect/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
@@ -49,9 +58,15 @@ curl --request POST \
   --data code=$CODE \
   --data redirect_uri=http://localhost:8081/callback \
   --data audience=$CLIENT_ID
+```
 
+- Get the access token
+```shell
 export ACCESS_TOKEN=
+```
 
+- Call secured resource
+```shell
 curl -v --request GET \
   --url http://localhost:8081/users/api/welcome \
   --header 'authorization: Bearer $ACCESS_TOKEN' \
