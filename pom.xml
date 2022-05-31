@@ -15,6 +15,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>resource-server</module>
+        <module>api-gateway</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -40,6 +41,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>2.7.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>2.7.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>3.1.2</version>
             </dependency>
 
             <dependency>

@@ -9,18 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>resource-server</artifactId>
-    <name>Sum :: MicroService Application :: Resource Server</name>
-
+    <artifactId>api-gateway</artifactId>
+    <name>Sum :: MicroService Application :: API Gateway</name>
     <packaging>jar</packaging>
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
         <dependency>
@@ -29,5 +29,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 
 </project>
