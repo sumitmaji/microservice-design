@@ -16,6 +16,7 @@
     <modules>
         <module>resource-server</module>
         <module>api-gateway</module>
+        <module>discovery-service</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -60,6 +61,18 @@
                 <version>2.7.0</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>3.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>3.1.2</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
