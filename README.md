@@ -12,6 +12,12 @@ mvn spring-boot:run -Dspring.boot.run.arguments=--instanceId=sumit
 java -cp "app:app/lib/*" -Dserver.port=8080 com.sum.security.MyApplication
 ```
 
+- Passing arguments to spring boot application via intellij
+  1. Go to `Edit Configuration`
+  2. Select the main class file.
+  3. Got `Program Arguments` text field.
+  4. Put the property that you want to put. e.g. `--spring.profiles.active=dev`
+
 # Checking authorization code grant flow in Auth0
 ```shell
 export CLIENT_ID=
