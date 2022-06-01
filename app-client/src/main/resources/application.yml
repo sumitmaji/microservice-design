@@ -1,0 +1,27 @@
+server:
+  port: 8085
+  tomcat:
+    use-relative-redirects: true
+
+#logging:
+#  level:
+#    org:
+#      springframework: DEBUG
+
+keycloak:
+  server:
+    uri: http://localhost:8080
+oauth:
+  clientId: microserviceclient
+  clientSecret: bFPQHeOg79Lr4bQWaPdR3nK3YQfveI1d
+  realm: microservicedev
+  audience: ${keycloak.server.uri}/realms/${oauth.realm}/protocol/openid-connect/userinfo
+  authorizeUrl: ${keycloak.server.uri}/realms/${oauth.realm}/protocol/openid-connect/auth
+  tokenUrl: ${keycloak.server.uri}/realms/${oauth.realm}/protocol/openid-connect/token
+  userInfoUrl: ${keycloak.server.uri}/realms/${oauth.realm}/protocol/openid-connect/userinfo
+  clientName: keycloak
+  jwkUrl: ${keycloak.server.uri}/realms/${oauth.realm}/protocol/openid-connect/certs
+  registrationId: keycloak
+  issuerUtl: ${keycloak.server.uri}/realms/${oauth.realm}
+  tokenEndpoint: /protocol/openid-connect/token
+  passwordGrantType: password
