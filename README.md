@@ -7,6 +7,11 @@ mvn package
 mvn spring-boot:run -Dspring.boot.run.arguments=--instanceId=sumit
 ```
 
+- Running spring boot using java command
+```shell
+java -cp "app:app/lib/*" -Dserver.port=8080 com.sum.security.MyApplication
+```
+
 # Checking authorization code grant flow in Auth0
 ```shell
 export CLIENT_ID=
