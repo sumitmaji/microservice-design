@@ -1,5 +1,9 @@
 # Resource Server
 
+- For `local` eureka and config clients are disabled.
+- For `dev`,`prod` eureka and config clients are enabled. The configurations are fetched from
+Configuration server. The configuration server fetches the config from [`git repo`](https://github.com/sumitmaji/spring-app-prop-repo).
+
 ## In order to configure resource server to use Auth0 follow the below article
 ### `Auth0`
 - [`1`](https://auth0.com/docs/quickstart/backend/java-spring-security5?_ga=2.225893971.815247790.1653906983-383438293.1653444346&_gl=1*enohx7*rollup_ga*MzgzNDM4MjkzLjE2NTM0NDQzNDY.*rollup_ga_F1G3E656YZ*MTY1MzkwNjE3MC4xMC4xLjE2NTM5MDc4ODEuNjA.)

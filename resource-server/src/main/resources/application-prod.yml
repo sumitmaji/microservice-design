@@ -3,4 +3,4 @@ spring:
     import: optional:configserver:http://localhost:8084
   application:
     name: demo-resource-server
-  profile: default
+  profile: prod
