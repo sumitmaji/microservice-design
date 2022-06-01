@@ -1,6 +1,11 @@
 # microservice-design
 A project that contains all the features of micro-service design
 
+- Running spring boot from command line
+```shell
+mvn package
+mvn spring-boot:run -Dspring.boot.run.arguments=--instanceId=sumit
+```
 
 # Checking authorization code grant flow in Auth0
 ```shell
